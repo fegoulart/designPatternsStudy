@@ -5,7 +5,7 @@ public class Main {
     // Objetivo dos Creational Patterns é trazer flexibilidade / reuso (nao obrigatoriamente diminuir o tamanho)
     public static Maze createMaze() {
         Maze aMaze = new Maze(); // E se ja recebessemos um objeto como parametro ? -> Abstract Factory
-        // Se este parametro recebido pudesse criar um maze totalmente novo usando operacoes internas -> Builder
+        // Se este parametro recebido pudesse criar um maze totalmente novo usando operacoes internas -> MazeBuilder.java
         Room r1 = new Room(1); // E se chamassesmos virtual functions ao inves de new NomeDaClasse ? -> Factory Method
         Room r2 = new Room(2); // E se ao inves de usar new Room, tivessemos um Room prototipado que pudessemos copiar e adicionar ao maze -> Prototype
         Door theDoor = new Door(r1, r2);
@@ -49,12 +49,28 @@ public class Main {
         return aMaze;
     }
 
+    public static Maze builderCreateMaze(MazeBuilder builder) {
+        builder.buildMaze();
+        builder.buildRoom(1);
+        builder.buildRoom(2);
+        builder.buildDoor(1,2);
+
+        return builder.getMaze();
+    }
+
+    //CONTINUAR DAQUI
     public static void main(String args[]) {
         //  Maze myMaze = createMaze();
         //  System.out.println(myMaze.getRoom(1).roomNumber);
 
-        Maze myMaze = abstractFactoryCreateMaze(new MazeFactory());
+        //Maze myMaze = abstractFactoryCreateMaze(new MazeFactory()); // Client nao tem acesso às classes concretas de construcao
+        //System.out.println(myMaze.getRoom(1).roomNumber);
+
+
+        StandardMazeBuilder builder = new StandardMazeBuilder(); //Concrete Builder
+        Maze myMaze = builderCreateMaze(builder); //builderCreateMaze is the director
         System.out.println(myMaze.getRoom(1).roomNumber);
+
 
         // Desafio: reutilizar um layout existente para um novo jogo com enchanted mazes
         // Novos componentes:
