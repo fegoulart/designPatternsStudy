@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Room extends MapSite {
+public class Room extends MapSite implements Cloneable {
     public int roomNumber;
     private HashMap<Direction, MapSite> sides = new HashMap<>();
 
@@ -14,6 +14,15 @@ public class Room extends MapSite {
 
     public void setSide (Direction direction, MapSite mapSite) {
         this.sides.put(direction,mapSite);
+    }
+
+    public Object clone() throws
+            CloneNotSupportedException {
+        return super.clone();
+    }
+
+    public void initialize(int roomNo) {
+        this.roomNumber = roomNo;
     }
 
 

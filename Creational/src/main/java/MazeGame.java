@@ -1,24 +1,26 @@
 public class MazeGame {
 
-    public Maze createMaze(MazeBuilder builder) {
-        builder.buildMaze();
+    public Maze createMaze(MazePrototypeFactory factory) throws CloneNotSupportedException {
 
-        builder.buildRoom(1);
-        builder.buildRoom(2);
-        builder.buildDoor(1,2);
+        Maze aMaze = factory.makeMaze();
+        Room r1 = factory.makeRoom(1);
+        Room r2 = factory.makeRoom(2);
+        Door theDoor = factory.makeDoor(r1,r2);
 
-        return builder.getMaze();
+        aMaze.addRoom(r1);
+        aMaze.addRoom(r2);
+
+        r1.setSide(Direction.NORTH,factory.makeWall());
+        r1.setSide(Direction.EAST, theDoor);
+        r1.setSide(Direction.SOUTH, factory.makeWall());
+        r1.setSide(Direction.WEST, factory.makeWall());
+
+        r2.setSide(Direction.NORTH, factory.makeWall());
+        r2.setSide(Direction.EAST, factory.makeWall());
+        r2.setSide(Direction.SOUTH, factory.makeWall());
+        r2.setSide(Direction.WEST, theDoor);
+
+        return aMaze;
     }
 
-    public Maze createComplexMaze(MazeBuilder builder) {
-        builder.buildRoom(1);
-        builder.buildRoom(2);
-        builder.buildRoom(3);
-        builder.buildRoom(4);
-        builder.buildRoom(5);
-        builder.buildRoom(6);
-        builder.buildRoom(7);
-
-        return builder.getMaze();
-    }
 }

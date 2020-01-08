@@ -1,6 +1,6 @@
 import java.util.HashMap;
 
-public class Maze {
+public class Maze implements Cloneable {
     private HashMap<Integer,Room> rooms = new HashMap<Integer,Room>();
 
     public void addRoom (Room room) {
@@ -8,5 +8,10 @@ public class Maze {
     }
     public Room getRoom (Integer roomNo) {
         return rooms.get(roomNo);
+    }
+
+    public Object clone() throws
+            CloneNotSupportedException {
+        return super.clone();
     }
 }

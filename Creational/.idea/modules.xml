@@ -4,7 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Creational.iml" filepath="$PROJECT_DIR$/.idea/modules/Creational.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/Creational.main.iml" filepath="$PROJECT_DIR$/.idea/modules/Creational.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/Creational.test.iml" filepath="$PROJECT_DIR$/.idea/modules/Creational.test.iml" />
     </modules>
   </component>
 </project>
