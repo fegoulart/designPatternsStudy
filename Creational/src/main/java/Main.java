@@ -28,8 +28,11 @@ public class Main {
     }
 
     public static void main(String args[]) {
-        Maze myMaze = createMaze();
-        System.out.println(myMaze.getRoom(1).roomNumber);
+        //Maze myMaze = createMaze();
+        //System.out.println(myMaze.getRoom(1).roomNumber);
+
+        Maze myFactoryMethodMaze = new MazeGame().createMaze();
+        System.out.println(myFactoryMethodMaze.getRoom(1).roomNumber);
 
         // Desafio: reutilizar um layout existente para um novo jogo com enchanted mazes
         // Novos componentes:
