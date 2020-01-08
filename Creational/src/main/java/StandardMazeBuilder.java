@@ -16,19 +16,16 @@ public class StandardMazeBuilder extends MazeBuilder {
         room.setSide(Direction.SOUTH, new Wall());
         room.setSide(Direction.EAST, new Wall());
         room.setSide(Direction.WEST, new Wall());
-
-
     }
 
     @Override
     public void buildDoor(int roomFrom, int roomTo) {
         Room r1 = currentMaze.getRoom(roomFrom);
         Room r2 = currentMaze.getRoom(roomTo);
-        Door d = new Door(r1,r2);
+        Door d = new Door(r1, r2);
 
-        r1.setSide(CommonWall(r1,r2),d);
-        r2.setSide(CommonWall(r2,r1),d);
-
+        r1.setSide(CommonWall(r1, r2), d);
+        r2.setSide(CommonWall(r2, r1), d);
     }
 
     @Override
@@ -38,7 +35,7 @@ public class StandardMazeBuilder extends MazeBuilder {
 
     private Direction CommonWall(Room r1, Room r2) {
         //TODO implement an algorithm to determine it
-        if (r1.roomNumber == 1){
+        if (r1.roomNumber == 1) {
             return Direction.EAST;
         } else {
             return Direction.WEST;

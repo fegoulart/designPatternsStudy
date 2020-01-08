@@ -49,16 +49,6 @@ public class Main {
         return aMaze;
     }
 
-    public static Maze builderCreateMaze(MazeBuilder builder) {
-        builder.buildMaze();
-        builder.buildRoom(1);
-        builder.buildRoom(2);
-        builder.buildDoor(1,2);
-
-        return builder.getMaze();
-    }
-
-    //CONTINUAR DAQUI
     public static void main(String args[]) {
         //  Maze myMaze = createMaze();
         //  System.out.println(myMaze.getRoom(1).roomNumber);
@@ -68,7 +58,9 @@ public class Main {
 
 
         StandardMazeBuilder builder = new StandardMazeBuilder(); //Concrete Builder
-        Maze myMaze = builderCreateMaze(builder); //builderCreateMaze is the director
+        Maze myMaze = new MazeGame().createMaze(builder); //builderCreateMaze is the director
+
+
         System.out.println(myMaze.getRoom(1).roomNumber);
 
 
